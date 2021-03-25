@@ -10,7 +10,7 @@ import { jwtConstants } from './constants';
     UserModule,
     ConfigModule,
     JwtModule.register({
-      secret: jwtConstants.secret,
+      secret: 'secretkey',
       signOptions: { expiresIn: '60s' }
     })
   ],
