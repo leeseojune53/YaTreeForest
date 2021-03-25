@@ -25,6 +25,10 @@ export class UserService {
         await this.userRepository.signUp(request);
     }
 
+    findOne(userName: string) {
+        return this.userRepository.findOne({userName});
+    }
+
     
 
 }
