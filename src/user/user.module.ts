@@ -8,6 +8,9 @@ import { UserRepository } from './entity/user.repo';
 @Module({
   imports: [TypeOrmModule.forFeature([UserRepository])],
   providers: [UserService],
-  controllers: [UserController]
+  controllers: [UserController],
+  exports: [UserService]
 })
-export class UserModule {}
+export class UserModule {
+
+}
