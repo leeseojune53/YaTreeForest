@@ -1,7 +1,8 @@
-import { Injectable, Post } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { PostRepository } from './entity/post.repo'
 import { PostDto } from './dto/post.dto';
+import { Post } from './entity/post.entity';
+import { PostRepository } from './entity/post.repo';
 
 @Injectable()
 export class PostService {
@@ -10,8 +11,12 @@ export class PostService {
         private postRepository: PostRepository,
     ){}
 
-    writePost(request: PostDto) {
-        this.postRepository.savePost(request);
+    async write(request: PostDto) {
+        this.postRepository.write(request);
+    }
+
+    async get() {
+        return this.postRepository.find()
     }
 
 }
