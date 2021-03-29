@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { Body, Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import { JwtGuard } from 'src/auth/jwt.guard';
 import { PostDto } from './dto/post.dto';
 import { PostService } from './post.service';
 
@@ -9,9 +9,10 @@ export class PostController {
         private postService: PostService,
     ){}
 
-    @UseGuards(AuthGuard)
+    @UseGuards(JwtGuard)
     @Post()
-    write(@Body() request: PostDto) {
+    write(@Body() request: PostDto, @Request() req) {
+        console.log(req.user)
         this.postService.write(request);
     }
 
