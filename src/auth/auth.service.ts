@@ -3,7 +3,6 @@ import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcrypt';
 import { User } from 'src/user/entity/user.entity';
 import { JwtService } from '@nestjs/jwt';
-import { jwtConstants } from './constants';
 
 @Injectable()
 export class AuthService {
@@ -31,6 +30,6 @@ export class AuthService {
     }
 
     async validateToken(token: string) {
-        console.log(this.jwtService.decode(token))
+        return await this.userService.findById(this.jwtService.decode(token)['sub']);
     }
 }
