@@ -29,6 +29,10 @@ export class UserService {
         return this.userRepository.findOne({userName});
     }
 
+    findById(userId: number) {
+        return this.userRepository.findOne({id: userId});
+    }
+
     
 
 }
