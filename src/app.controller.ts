@@ -15,7 +15,7 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Post()
+  @Post('login')
   login(@Body() request: UserDto) {
     return this.authService.login(request.userName, request.password);
   }
