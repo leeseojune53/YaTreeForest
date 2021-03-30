@@ -22,7 +22,6 @@ export class AuthService {
 
     async login(userName: string, pass: string) {
         var user: User = await this.validateUser(userName, pass);
-        console.log(user.id)
         const payload = { sub: user.id };
         return {
             access_token: this.jwtService.sign(payload),
@@ -30,6 +29,7 @@ export class AuthService {
     }
 
     async validateToken(token: string) {
+        this.jwtService.verify(token)
         return await this.userService.findById(this.jwtService.decode(token)['sub']);
     }
 }
