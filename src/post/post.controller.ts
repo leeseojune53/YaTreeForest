@@ -12,10 +12,6 @@ export class PostController {
     @UseGuards(JwtGuard)
     @Post()
     write(@Body() request: PostDto, @Request() req) {
-        //console.log(req.user)
-        if(!request.contents){
-            throw new BadRequestException("Contents is null");
-        }
         this.postService.write(request, req.user);
     }
 
