@@ -27,7 +27,6 @@ import { Post } from './post/entity/post.entity';
     }),
     UserModule,
     PostModule,
-    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
